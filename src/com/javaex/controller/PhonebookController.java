@@ -70,13 +70,21 @@ public class PhonebookController extends HttpServlet {
 			//리다이렉트
 			response.sendRedirect("/phonebookd2/pbc?action=list");
 			
-		}else if("deleteForm".equals(act)) {
-			System.out.println("action = deleteForm");
+		}else if("delete".equals(act)) {
+			System.out.println("action = delete");
 			
-			//값
-			//포워드
-			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
-			rd.forward(request, response);
+			//phonedao선언
+			PhoneDao phoneDao = new PhoneDao();
+
+			//파라미터받고
+			String str = request.getParameter ("id");
+			int id = Integer.parseInt(str);
+			
+			//삭제하고
+			phoneDao.personDelete(id);
+			
+			//리다이렉션
+			response.sendRedirect("/phonebook2/pbc?action=list");
 			
 		}else {
 			System.out.println("파라미터 값 없음");

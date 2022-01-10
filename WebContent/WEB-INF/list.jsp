@@ -45,12 +45,11 @@
 			<td><%=personList.get(i).getCompany()%></td>
 		</tr>
 		<tr>
-			<td>수정하기</td>
 			<td>
-				<form action="/phonebook2/pbc" method="get">
-					<input type="hidden" name="action" value="deleteForm">
-					<button type="submit">삭제하기</button>
-				</form>
+				<a href="/phonebook2/pbc?action=Update&id=<%=personList.get(i).getPersonId()%>">수정하기</a>
+			</td>
+			<td>
+				<a href="/phonebook2/pbc?action=delete&id=<%=personList.get(i).getPersonId()%>">삭제하기</a>
 			</td>
 		</tr>
 	</table>
