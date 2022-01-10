@@ -46,7 +46,7 @@
 		</tr>
 		<tr>
 			<td>
-				<a href="/phonebook2/pbc?action=Update&id=<%=personList.get(i).getPersonId()%>">수정하기</a>
+				<a href="/phonebook2/pbc?action=updateForm&id=<%=personList.get(i).getPersonId()%>">수정하기</a>
 			</td>
 			<td>
 				<a href="/phonebook2/pbc?action=delete&id=<%=personList.get(i).getPersonId()%>">삭제하기</a>
@@ -57,9 +57,7 @@
 	<%
 	}
 	%>
-	<form action="/phonebook2/pbc" method="get">
-	<input type="hidden" name="action" value="writeForm">
-	<button type="submit">추가하기</button>
+	<a href="/phonebook2/pbc?action=writeForm">추가하기</a>
 	</form>
 
 	

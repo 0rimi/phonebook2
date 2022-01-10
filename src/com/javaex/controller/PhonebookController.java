@@ -68,7 +68,7 @@ public class PhonebookController extends HttpServlet {
 			phoneDao.personInsert(personVo);
 			
 			//리다이렉트
-			response.sendRedirect("/phonebookd2/pbc?action=list");
+			response.sendRedirect("/phonebook2/pbc?action=list");
 			
 		}else if("delete".equals(act)) {
 			System.out.println("action = delete");
@@ -86,6 +86,34 @@ public class PhonebookController extends HttpServlet {
 			//리다이렉션
 			response.sendRedirect("/phonebook2/pbc?action=list");
 			
+		}else if("updateForm".equals(act)) {
+			System.out.println("action = UpdateForm");
+			
+			//값
+			//포워드
+			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/updateForm.jsp");
+			rd.forward(request, response);
+		}else if("update".equals(act)) {
+			
+			//phonedao쓸거고
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//파라미터 받고
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			String str = request.getParameter ("id");
+			int id = Integer.parseInt(str);
+			
+			//personVo도 쓸거임
+			PersonVo upvo = new PersonVo(id, name, hp, company);
+			System.out.println(upvo);
+			
+			//수정
+			phoneDao.personUpdate(upvo);
+					
+			//리다이렉션
+			response.sendRedirect("/phonebook2/pbc?action=list");
 		}else {
 			System.out.println("파라미터 값 없음");
 		}
